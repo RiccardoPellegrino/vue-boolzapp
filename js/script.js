@@ -1,3 +1,15 @@
+// Milestone 1
+// ● Replica della grafica con la possibilità di avere messaggi scritti dall’utente (verdi) e
+// dall’interlocutore (bianco) assegnando due classi CSS diverse
+// ● Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare
+// nome e immagine di ogni contatto
+// Milestone 2
+// ● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
+// messaggi relativi al contatto attivo all’interno del pannello della conversazione
+// ● Click sul contatto mostra la conversazione del contatto cliccato
+
+
+
 const { createApp } = Vue;
 
 const app = createApp({
@@ -5,6 +17,7 @@ const app = createApp({
         return {
             contacts: [
                 {
+                    id: 1,
                     name: 'Michele',
                     avatar: '_1',
                     visible: true,
@@ -27,6 +40,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 2,
                     name: 'Fabio',
                     avatar: '_2',
                     visible: true,
@@ -49,6 +63,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 3,
                     name: 'Samuele',
                     avatar: '_3',
                     visible: true,
@@ -71,6 +86,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 4,
                     name: 'Alessandro B.',
                     avatar: '_4',
                     visible: true,
@@ -88,6 +104,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 5,
                     name: 'Alessandro L.',
                     avatar: '_5',
                     visible: true,
@@ -105,6 +122,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 6,
                     name: 'Claudia',
                     avatar: '_6',
                     visible: true,
@@ -127,6 +145,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 7,
                     name: 'Federico',
                     avatar: '_7',
                     visible: true,
@@ -144,6 +163,7 @@ const app = createApp({
                     ],
                 },
                 {
+                    id: 8,
                     name: 'Davide',
                     avatar: '_8',
                     visible: true,
@@ -168,6 +188,10 @@ const app = createApp({
             ]
 
         }
+    },
+
+    methods: {
+
     }
-})
+}).mount('#app')
 

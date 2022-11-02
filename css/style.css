@@ -1,0 +1,59 @@
+body{
+   background-color: #DADBD3; 
+}
+.background {
+    height: 100vh;
+    background: linear-gradient(180deg, rgb(21, 124, 119) 15%, rgb(200, 200, 200) 15%);
+  }
+.contenitoreGrande {
+    height: 90%;
+    min-height: 400px;
+    width: 90%;
+    min-width: 900px;
+    max-width: 1200px;
+    background-color: white;
+    border: 1px solid rgb(61, 25, 128);
+    box-shadow: 0 0 20px 5px rgba(111, 143, 135, 0.5);
+  }
+  .cursor{
+    cursor: pointer;
+  }
+  .latoContatti {
+    height: 100%;
+    width: 35%;
+    min-width: 350px;
+    max-width: 500px;
+    border-right: 1px solid rgb(180, 180, 180);
+  }
+  .latoMessaggi{
+    height: 100%;
+    width: 100%;
+    border-right: 1px solid rgb(180, 180, 180);
+  }
+  .spazioIcona{
+    background-color: #EAEAEA;
+    height: 8%;
+  }
+  .celeste{
+    background-color: #8EDAFC;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+  }
+  .search{
+    width: 100%;
+  }
+  #bell{
+    vertical-align: middle;
+  }
+  .fa-bell-slash{
+    color: #8EDAFC;
+  }
+  #tondo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
+  }
+  
