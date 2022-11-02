@@ -32,6 +32,7 @@ body{
   }
   .spazioIcona{
     background-color: #EAEAEA;
+    align-items: center;
     height: 8%;
   }
   .celeste{
@@ -40,7 +41,7 @@ body{
     align-items: center;
     height: 10%;
   }
-  
+
   #bell{
     vertical-align: middle;
   }
@@ -50,11 +51,20 @@ body{
   #tondo{
     text-align: center;
     line-height: 46px;
-    position: relative;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
     background-color: white;
   }
-  
+  #icona{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
+    align-items: center;
+  }
+  img{
+    width:100%
+  }
