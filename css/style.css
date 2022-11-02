@@ -50,8 +50,11 @@ body{
     color: #8EDAFC;
   }
   #tondo{
-    width: 40px;
-    height: 40px;
+    text-align: center;
+    line-height: 46px;
+    position: relative;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
     background-color: white;
