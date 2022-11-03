@@ -23,7 +23,8 @@ body {
 .cursor {
   cursor: pointer;
 }
-#mioBottone{
+
+#mioBottone {
   background-color: white;
   border: 1px solid black;
   margin-left: 10px;
@@ -35,7 +36,7 @@ body {
 }
 
 .unaChat {
-  /* height: 80px; */
+  height: 80px;
   cursor: pointer;
 }
 
@@ -54,11 +55,12 @@ body {
   border-right: 1px solid rgb(180, 180, 180);
 }
 
-.listaContatti{
+.listaContatti {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 }
+
 .latoMessaggi {
   position: relative;
   height: 100%;
@@ -78,10 +80,12 @@ body {
   width: 100%;
   background-color: #F3EEEA;
 }
-.centroMessaggi{
+
+.centroMessaggi {
   height: calc(100% - 120px);
   overflow-y: auto;
 }
+
 .spazioIcona {
   justify-content: space-between;
   background-color: #EAEAEA;
@@ -99,7 +103,9 @@ body {
 #bell {
   vertical-align: middle;
 }
-
+#bell:hover{
+  color: blueviolet;
+}
 .fa-bell-slash {
   color: #8EDAFC;
 }
@@ -120,7 +126,7 @@ body {
   border-radius: 50%;
   overflow: hidden;
   background-color: white;
-  align-items: center;
+  align-self: center;
 }
 
 img {
@@ -138,23 +144,40 @@ img {
 .testoMedio {
   font-size: 14px;
 }
-.messaggio{
-position: relative;
-min-width: 40%;
-max-width: 60%;
-margin:5px 0px;
-padding: 15px 15px 20px;
-background-color: white;
-border-radius: 10px;
-}
-.chat{
- display: flex;
- flex-flow: column;
- align-items: flex-start;
- justify-content: flex-start;
-}
-.messaggio.sent{
-  align-self: flex-end;
-  background-color: green;
 
+.messaggio {
+  position: relative;
+  min-width: 40%;
+  max-width: 60%;
+  margin: 5px 0px;
+  padding: 15px 15px 20px;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.chat {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.messaggio.sent {
+  align-self: flex-end;
+  background-color: #D5F9BA;
+  margin-right: 10px;
+
+}
+
+.grey {
+  color: #B1B1B1;
+}
+
+i:hover{
+  color: black;
+}
+.active{
+  background-color: #e6e0e0;
 }

@@ -17,6 +17,8 @@ const app = createApp({
     data() {
         return {
             currentChat: 0,
+            newMessage: '',
+            searchTerm: '',
             messaggiVisualizzati: [
                 {
                     testo: ''
@@ -196,24 +198,55 @@ const app = createApp({
 
         }
     },
+    computed: {
+        cercaContatto() {
+            return this.contacts.filter((item) => {
+                const name = item.name.toLowerCase();
+                console.log(name);
+                return name.includes(this.searchTerm.toLowerCase())
+            })
+        }
+    },
 
     methods: {
 
         onClickContatto(id) {
+            this.currentChat = this.contacts.findIndex((item) => item.id === id)
+        },
 
-            // console.log(this.contacts[i].messages);
+        sendMessage() {
+            if (!this.newMessage) return;
 
-            // this.messaggiVisualizzati = [];
-            // this.messaggiVisualizzati = this.contacts[i].messages;
-            this.currentChat = this.contacts.findIdex((item) => item.id === id)
+            const d = new Date();
+            let newDate = d.toDateString();
+            const newSentMessage = {
+                date: newDate,
+                message: this.newMessage,
+                status: 'sent'
+            }
+            this.contacts[this.currentChat].messages.push(newSentMessage);
+            this.newMessage = '';
+
+            setTimeout(() => {
+                const d = new Date();
+                let newDate = d.toDateString();
+                const newSentMessage = {
+                    date: newDate,
+                    message: 'ok',
+                    status: 'received'
+                }
+                this.contacts[this.currentChat].messages.push(newSentMessage);
+
+            }, 1000);
 
         },
-        // getChat(id) {
-        //     this.currentChat = this.contacts.findIdex((value) => {
-        //         return id === value.id
-        //     })
-        // }
-
+        getLastMessage(item) {
+            const msg = item.messages.filter((message) => {
+                return message.status === 'received';
+            })
+            console.log(msg);
+            return msg[msg.length - 1];
+        }
     }
 }).mount('#app')
 

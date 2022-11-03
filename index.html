@@ -32,10 +32,10 @@
                             <span><strong>Riccardo</strong></span>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-circle-notch fs-4 me-4 text-secondary cursor"></i>
-                        <i class="fa-solid fa-message fs-4 me-4 text-secondary cursor"></i>
-                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 text-secondary cursor"></i>
+                    <div class="grey d-flex align-items-center">
+                        <i class="fa-solid fa-circle-notch fs-4 me-4 cursor"></i>
+                        <i class="fa-solid fa-message fs-4 me-4  cursor"></i>
+                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4  cursor"></i>
                     </div>
                 </div>
 
@@ -50,26 +50,28 @@
                     </div>
                 </div>
 
-                <div id="ricerca" class="mt-1 mb-1 opacity-25">
+                <div id="ricerca" class="mt-1 mb-1 opacity-75">
                     <button id="mioBottone"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" class="w-75" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" class="w-75" placeholder="Cerca o inizia una nuova chat"
+                        v-model.trim="searchTerm">
                 </div>
 
                 <!-- icone messaggi  -->
                 <div class="pannelloChat overflow-auto">
                     <div>
-                        <div class="unaChat mt-3" :class="{'active': index===currentChat}" v-for="(item, index) in contacts" :key="item.id" @click="onClickContatto(item.id)">
-                            <div  class="d-flex">
+                        <div class="unaChat mt-3" :class="{'active': index === currentChat}"
+                            v-for="(item, index) in cercaContatto" :key="item.id" @click="onClickContatto(item.id)">
+                            <div class="d-flex">
                                 <div id="icona" class="ms-1">
-                                    <img :src="`./img/avatar${contacts[index].avatar}.jpg`" :alt="item.name">
+                                    <img :src="`./img/avatar`+ item.avatar +`.jpg`" :alt="item.name">
                                 </div>
                                 <div class="ms-2 testo">
                                     <span><strong>{{item.name}}</strong></span>
                                     <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo messaggio
-                                        inviato alle
-                                        {{contacts[index].messages[contacts[index].messages.length-1].date.substring(11,16)}}</span>
-                                        <!-- {{item.messages[item.messages.length-1].date}} -->
-                                       <small>{{item.messages[item.messages.length-1].message}}</small>
+                                        inviato il
+                                        {{getLastMessage(item).date}}</span>
+
+                                    <small> {{getLastMessage(item).message}}</small>
                                 </div>
                             </div>
                         </div>
@@ -84,46 +86,43 @@
                 <div class="spazioIcona d-flex">
                     <div class="d-flex">
                         <div id="icona" class="ms-1">
-                            <img src="./img/avatar_1.jpg" alt="">
+                            <img :src="'./img/avatar'+ contacts[currentChat].avatar+'.jpg'"
+                                :alt="contacts[currentChat].name">
                         </div>
                         <div class="ms-2 testo">
                             <span><strong>{{contacts[currentChat].name}}</strong></span>
-                            <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo accesso {{contacts[currentChat].messages[contacts[currentChat].messages.length-1].date}}
+                            <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo accesso
+                                {{getLastMessage(contacts[currentChat]).date}}
                             </span>
                         </div>
                     </div>
-                    <div class="d-flex">
+                    <div class="d-flex grey">
 
-                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 text-secondary cursor"></i>
+                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 cursor"></i>
 
-                        <i class="fa-solid fa-paperclip fs-4 me-4 text-secondary cursor"></i>
+                        <i class="fa-solid fa-paperclip fs-4 me-4 cursor"></i>
 
-                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 text-secondary cursor"></i>
+                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 cursor"></i>
                     </div>
                 </div>
                 <div class="centroMessaggi">
                     <div class="chat">
-                        <div class="messaggio" :class="message.status" v-for="(message,index) in contacts[currentChat].messages" :key="index">
-                            {{message.message}}
+                        <div class="messaggio" :class="message.status"
+                            v-for="(message,index) in contacts[currentChat].messages" :key="index">
+                            <div>
+                                {{message.message}}
+                            </div>
                         </div>
                     </div>
-
-
-<!-- 
-                    <div class="" v-for="(item, index) in messaggiVisualizzati" :key="index">
-                        <div> {{ item.message }} </div>
-                        <div> {{ item.status}} </div>
-                        <div> {{ item.date }} </div>
-                    </div> -->
-
                 </div>
-                <div class="scriviQui">
+                <div class="scriviQui grey">
 
-                    <i class="fa-regular fa-face-smile fs-4 me-4 text-secondary cursor"></i>
+                    <i class="fa-regular fa-face-smile fs-4 me-4  cursor"></i>
 
-                    <input type="text" class="w-50 h-50 rounded-pill border-0" placeholder=" Scrivi un messaggio">
+                    <input type="text" class="w-50 h-50 rounded-pill border-0" placeholder=" Scrivi un messaggio"
+                        v-model.trim="newMessage" @keyup.enter="sendMessage">
 
-                    <i class="fa-solid fa-microphone fs-4 me-4 text-secondary ms-5 cursor"></i>
+                    <i class="fa-solid fa-microphone fs-4 me-4  ms-5 cursor"></i>
 
                 </div>
             </div>
