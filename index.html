@@ -10,19 +10,20 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Boolzapp</title>
 </head>
 
 <body>
     <div id="app" class="background d-flex align-items-center justify-content-center">
-        <main class="contenitoreGrande d-flex">
+        <main class="contenitoreGrande d-flex flex-row">
 
-<!-- lato contatti  -->
+            <!-- lato contatti  -->
 
-            <div class="latoContatti overflow-hidden d-flex flex-column">
+            <div class="latoContatti">
 
-                <div class="spazioIcona d-flex">
+                <div class="mieInfo d-flex justify-content-between">
                     <div class="d-flex">
                         <div id="icona" class="ms-1">
                             <img src="./img/avatar_1.jpg" alt="">
@@ -31,12 +32,10 @@
                             <span><strong>Riccardo</strong></span>
                         </div>
                     </div>
-                    <div class="d-flex cursor">
-                        <i class="fa-solid fa-circle-notch fs-4 me-4 text-secondary"></i>
-
-                        <i class="fa-solid fa-message fs-4 me-4 text-secondary"></i>
-
-                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 text-secondary"></i>
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-circle-notch fs-4 me-4 text-secondary cursor"></i>
+                        <i class="fa-solid fa-message fs-4 me-4 text-secondary cursor"></i>
+                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 text-secondary cursor"></i>
                     </div>
                 </div>
 
@@ -46,16 +45,39 @@
                     </div>
                     <div class="d-flex flex-column ms-2">
                         <span>Ricevi notifiche di nuovi messaggi</span>
-                        <span class="text-decoration-underline cursor text-secondary">Attiva notifiche desktop</span>
+                        <span class="text-decoration-underline cursor text-secondary testoMedio">Attiva notifiche
+                            desktop</span>
                     </div>
                 </div>
 
-                <div>
-                    <input type="text" class="w-100" placeholder="Cerca o inizia una nuova chat">
+                <div id="ricerca" class="mt-1 mb-1 opacity-25">
+                    <button id="mioBottone"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" class="w-75" placeholder="Cerca o inizia una nuova chat">
                 </div>
-            </div>
 
-<!-- lato messaggi  -->
+                <!-- icone messaggi  -->
+                <div class="pannelloChat overflow-auto">
+                    <div>
+                        <div class="unaChat mt-3" :class="{'active': index===currentChat}" v-for="(item, index) in contacts" :key="item.id" @click="onClickContatto(item.id)">
+                            <div  class="d-flex">
+                                <div id="icona" class="ms-1">
+                                    <img :src="`./img/avatar${contacts[index].avatar}.jpg`" :alt="item.name">
+                                </div>
+                                <div class="ms-2 testo">
+                                    <span><strong>{{item.name}}</strong></span>
+                                    <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo messaggio
+                                        inviato alle
+                                        {{contacts[index].messages[contacts[index].messages.length-1].date.substring(11,16)}}</span>
+                                        <!-- {{item.messages[item.messages.length-1].date}} -->
+                                       <small>{{item.messages[item.messages.length-1].message}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- lato messaggi  -->
 
             <div class="latoMessaggi">
 
@@ -65,19 +87,48 @@
                             <img src="./img/avatar_1.jpg" alt="">
                         </div>
                         <div class="ms-2 testo">
-                            <span><strong>Riccardo</strong></span>
+                            <span><strong>{{contacts[currentChat].name}}</strong></span>
+                            <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo accesso {{contacts[currentChat].messages[contacts[currentChat].messages.length-1].date}}
+                            </span>
                         </div>
                     </div>
-                    <div class="d-flex cursor">
-                        <i class="fa-solid fa-circle-notch fs-4 me-4 text-secondary"></i>
+                    <div class="d-flex">
 
-                        <i class="fa-solid fa-paperclip fs-4 me-4 text-secondary"></i>
+                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 text-secondary cursor"></i>
 
-                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 text-secondary"></i>
+                        <i class="fa-solid fa-paperclip fs-4 me-4 text-secondary cursor"></i>
+
+                        <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 text-secondary cursor"></i>
                     </div>
                 </div>
+                <div class="centroMessaggi">
+                    <div class="chat">
+                        <div class="messaggio" :class="message.status" v-for="(message,index) in contacts[currentChat].messages" :key="index">
+                            {{message.message}}
+                        </div>
+                    </div>
+
+
+<!-- 
+                    <div class="" v-for="(item, index) in messaggiVisualizzati" :key="index">
+                        <div> {{ item.message }} </div>
+                        <div> {{ item.status}} </div>
+                        <div> {{ item.date }} </div>
+                    </div> -->
+
+                </div>
+                <div class="scriviQui">
+
+                    <i class="fa-regular fa-face-smile fs-4 me-4 text-secondary cursor"></i>
+
+                    <input type="text" class="w-50 h-50 rounded-pill border-0" placeholder=" Scrivi un messaggio">
+
+                    <i class="fa-solid fa-microphone fs-4 me-4 text-secondary ms-5 cursor"></i>
+
                 </div>
             </div>
+
+    </div>
 
 
     </div>

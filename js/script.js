@@ -10,11 +10,18 @@
 
 
 
+
 const { createApp } = Vue;
 
 const app = createApp({
     data() {
         return {
+            currentChat: 0,
+            messaggiVisualizzati: [
+                {
+                    testo: ''
+                }
+            ],
             contacts: [
                 {
                     id: 1,
@@ -191,6 +198,21 @@ const app = createApp({
     },
 
     methods: {
+
+        onClickContatto(id) {
+
+            // console.log(this.contacts[i].messages);
+
+            // this.messaggiVisualizzati = [];
+            // this.messaggiVisualizzati = this.contacts[i].messages;
+            this.currentChat = this.contacts.findIdex((item) => item.id === id)
+
+        },
+        // getChat(id) {
+        //     this.currentChat = this.contacts.findIdex((value) => {
+        //         return id === value.id
+        //     })
+        // }
 
     }
 }).mount('#app')

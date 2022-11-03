@@ -1,74 +1,160 @@
-body{
-   background-color: #DADBD3; 
+body {
+  background-color: #DADBD3;
 }
-.background {
-    height: 100vh;
-    background: linear-gradient(180deg, rgb(21, 124, 119) 15%, rgb(200, 200, 200) 15%);
-  }
-.contenitoreGrande {
-    height: 90%;
-    min-height: 400px;
-    width: 90%;
-    min-width: 900px;
-    max-width: 1200px;
-    background-color: white;
-    border: 1px solid rgb(61, 25, 128);
-    box-shadow: 0 0 20px 5px rgba(111, 143, 135, 0.5);
-  }
-  .cursor{
-    cursor: pointer;
-  }
-  .latoContatti {
-    height: 100%;
-    width: 35%;
-    min-width: 350px;
-    max-width: 500px;
-    border-right: 1px solid rgb(180, 180, 180);
-  }
-  .latoMessaggi{
-    height: 100%;
-    width: 100%;
-    border-right: 1px solid rgb(180, 180, 180);
-  }
-  .spazioIcona{
-    justify-content: space-between;
-    background-color: #EAEAEA;
-    align-items: center;
-    height: 8%;
-  }
-  .spazioNotifiche{
-    background-color: #8EDAFC;
-    justify-content: center;
-    align-items: center;
-    height: 10%;
-  }
 
-  #bell{
-    vertical-align: middle;
-  }
-  .fa-bell-slash{
-    color: #8EDAFC;
-  }
-  #tondo{
-    text-align: center;
-    line-height: 46px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: white;
-  }
-  #icona{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: white;
-    align-items: center;
-  }
-  img{
-    width:100%
-  }
-  .testo{
-    align-self:center;
-  }
+.background {
+  height: 100vh;
+  width: 100vw;
+  min-width: 1000px;
+  background: linear-gradient(180deg, rgb(21, 124, 119) 150px, rgb(200, 200, 200) 15%);
+}
+
+.contenitoreGrande {
+  height: 90%;
+  min-height: 400px;
+  width: 90%;
+  min-width: 750px;
+  max-width: 1200px;
+  background-color: white;
+  border: 1px solid rgb(61, 25, 128);
+  box-shadow: 0 0 20px 5px rgba(111, 143, 135, 0.5);
+}
+
+.cursor {
+  cursor: pointer;
+}
+#mioBottone{
+  background-color: white;
+  border: 1px solid black;
+  margin-left: 10px;
+}
+
+.mieInfo {
+  height: 60px;
+  background-color: #EAEAEA;
+}
+
+.unaChat {
+  /* height: 80px; */
+  cursor: pointer;
+}
+
+#ricerca {
+  height: 30px;
+}
+
+.pannelloChat {
+  height: calc(100% - 163px);
+}
+
+.latoContatti {
+  height: 100%;
+  min-width: 350px;
+  max-width: 500px;
+  border-right: 1px solid rgb(180, 180, 180);
+}
+
+.listaContatti{
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.latoMessaggi {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-right: 1px solid rgb(180, 180, 180);
+  background-image: url("../img/mine.jpg");
+}
+
+.scriviQui {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #F3EEEA;
+}
+.centroMessaggi{
+  height: calc(100% - 120px);
+  overflow-y: auto;
+}
+.spazioIcona {
+  justify-content: space-between;
+  background-color: #EAEAEA;
+  align-items: center;
+  height: 60px;
+}
+
+.spazioNotifiche {
+  background-color: #8EDAFC;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+}
+
+#bell {
+  vertical-align: middle;
+}
+
+.fa-bell-slash {
+  color: #8EDAFC;
+}
+
+#tondo {
+  text-align: center;
+  line-height: 46px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+}
+
+#icona {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+  align-items: center;
+}
+
+img {
+  width: 100%
+}
+
+.testo {
+  align-self: center;
+}
+
+.testoPiccolo {
+  font-size: 12px;
+}
+
+.testoMedio {
+  font-size: 14px;
+}
+.messaggio{
+position: relative;
+min-width: 40%;
+max-width: 60%;
+margin:5px 0px;
+padding: 15px 15px 20px;
+background-color: white;
+border-radius: 10px;
+}
+.chat{
+ display: flex;
+ flex-flow: column;
+ align-items: flex-start;
+ justify-content: flex-start;
+}
+.messaggio.sent{
+  align-self: flex-end;
+  background-color: green;
+
+}
