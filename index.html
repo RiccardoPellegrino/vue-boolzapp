@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Boolzapp</title>
 </head>
@@ -68,7 +69,7 @@
                                 <div class="ms-2 testo">
                                     <span><strong>{{item.name}}</strong></span>
                                     <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo messaggio
-                                        inviato il
+                                        inviato alle
                                         {{getLastMessage(item).date}}</span>
 
                                     <small> {{getLastMessage(item).message}}</small>
@@ -111,18 +112,21 @@
                             v-for="(message,index) in contacts[currentChat].messages" :key="index">
                             <div>
                                 {{message.message}}
+                                <small id="orarioMessaggio">{{message.date}}</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="scriviQui grey">
 
-                    <i class="fa-regular fa-face-smile fs-4 me-4  cursor"></i>
+                    <i class="fa-regular fa-face-smile fs-4 me-4 cursor"></i>
 
+                    <!-- invio messaggio casuale controllo icona aereoplano- microfono collega il valore alla variabile newmessage -->
+                    
                     <input type="text" class="w-50 h-50 rounded-pill border-0" placeholder=" Scrivi un messaggio"
-                        v-model.trim="newMessage" @keyup.enter="sendMessage">
+                        v-model.trim="newMessage" @keyup.enter="sendMessage" @keyup="impostaIconaInvio"> 
 
-                    <i class="fa-solid fa-microphone fs-4 me-4  ms-5 cursor"></i>
+                    <i class="fa-solid fs-4 me-4  ms-5 cursor" :class="iconaInvio" @click="sendMessage"></i>
 
                 </div>
             </div>

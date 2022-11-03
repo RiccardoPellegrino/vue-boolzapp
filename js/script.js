@@ -8,14 +8,17 @@
 // messaggi relativi al contatto attivo all’interno del pannello della conversazione
 // ● Click sul contatto mostra la conversazione del contatto cliccato
 
+var DateTime = luxon.DateTime;
 
-
-
+const FORMATO_ORA = "dd/MM/yyyy HH:mm:ss";
 const { createApp } = Vue;
 
 const app = createApp({
     data() {
         return {
+           
+            iconaInvio: 'fa-microphone',
+            risposte: ['Non posso rispondere', 'Chiamami piu tardi', 'Ci vediamo lunedi', 'Sono occupato sentiamoci dopo', 'Ho un sacco di patate'],
             currentChat: 0,
             newMessage: '',
             searchTerm: '',
@@ -210,15 +213,19 @@ const app = createApp({
 
     methods: {
 
-        onClickContatto(id) {
-            this.currentChat = this.contacts.findIndex((item) => item.id === id)
+        onClickContatto(idContatto) {
+            this.currentChat = this.contacts.findIndex((pippo) => pippo.id === idContatto)
         },
 
         sendMessage() {
             if (!this.newMessage) return;
 
-            const d = new Date();
-            let newDate = d.toDateString();
+            // const d = new Date();
+            // let newDate = d.toDateString();
+            
+            let newDate = DateTime.now()
+                .setLocale("it")
+                .toFormat(FORMATO_ORA);
             const newSentMessage = {
                 date: newDate,
                 message: this.newMessage,
@@ -226,13 +233,18 @@ const app = createApp({
             }
             this.contacts[this.currentChat].messages.push(newSentMessage);
             this.newMessage = '';
+            this.impostaIconaInvio();
 
             setTimeout(() => {
-                const d = new Date();
-                let newDate = d.toDateString();
+                // messaggio casuale
+                indiceMessaggioCasuale = Math.floor(Math.random() * this.risposte.length);
+                messaggioCasuale = this.risposte[indiceMessaggioCasuale];
+                let newDate = DateTime.now()
+                .setLocale("it")
+                .toFormat(FORMATO_ORA);
                 const newSentMessage = {
                     date: newDate,
-                    message: 'ok',
+                    message: messaggioCasuale,
                     status: 'received'
                 }
                 this.contacts[this.currentChat].messages.push(newSentMessage);
@@ -246,7 +258,18 @@ const app = createApp({
             })
             console.log(msg);
             return msg[msg.length - 1];
-        }
+        },
+
+        impostaIconaInvio() {
+            if (this.newMessage) {
+                this.iconaInvio = 'fa-paper-plane';
+
+            } else {
+                this.iconaInvio = 'fa-microphone';
+            }
+            console.log('staScrivendo');
+        },
+
     }
 }).mount('#app')
 
