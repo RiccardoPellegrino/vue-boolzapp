@@ -5,7 +5,7 @@ body {
 .background {
   height: 100vh;
   width: 100vw;
-  min-width: 1000px;
+  /* min-width: 1000px; */
   background: linear-gradient(180deg, rgb(21, 124, 119) 150px, rgb(200, 200, 200) 15%);
 }
 
@@ -103,9 +103,11 @@ body {
 #bell {
   vertical-align: middle;
 }
-#bell:hover{
+
+#bell:hover {
   color: blueviolet;
 }
+
 .fa-bell-slash {
   color: #8EDAFC;
 }
@@ -175,19 +177,36 @@ img {
   color: #B1B1B1;
 }
 
-i:hover{
+i:hover {
   color: black;
 }
-.active{
+
+.active {
   background-color: #e6e0e0;
 }
-#aereoplano:hover{
+
+#aereoplano:hover {
   color: green;
 }
-#orarioMessaggio{
+
+#orarioMessaggio {
   position: absolute;
   bottom: 0;
   right: 0;
   font-size: 10px;
   margin-right: 5px;
+}
+
+@media screen and (max-width:768px) {
+  .latoMessaggi {
+    display: none;
+  }
+
+  .latoContatti {
+    width: 100%;
+    max-width: none;
+  }
+  .contenitoreGrande{
+    min-width: 500px;
+  }
 }

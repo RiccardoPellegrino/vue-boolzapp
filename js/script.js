@@ -8,7 +8,7 @@
 // messaggi relativi al contatto attivo all’interno del pannello della conversazione
 // ● Click sul contatto mostra la conversazione del contatto cliccato
 
-var DateTime = luxon.DateTime;
+let DateTime = luxon.DateTime;
 
 const FORMATO_ORA = "dd/MM/yyyy HH:mm:ss";
 const { createApp } = Vue;
@@ -16,12 +16,17 @@ const { createApp } = Vue;
 const app = createApp({
     data() {
         return {
-           
+
             iconaInvio: 'fa-microphone',
             risposte: ['Non posso rispondere', 'Chiamami piu tardi', 'Ci vediamo lunedi', 'Sono occupato sentiamoci dopo', 'Ho un sacco di patate'],
             currentChat: 0,
             newMessage: '',
             searchTerm: '',
+            showChat: false,
+            msgOpt: {
+                index: null,
+                show: false
+            },
             messaggiVisualizzati: [
                 {
                     testo: ''
@@ -214,7 +219,8 @@ const app = createApp({
     methods: {
 
         onClickContatto(idContatto) {
-            this.currentChat = this.contacts.findIndex((pippo) => pippo.id === idContatto)
+            this.currentChat = this.contacts.findIndex((pippo) => pippo.id === idContatto);
+            this.changeView();
         },
 
         sendMessage() {
@@ -222,9 +228,9 @@ const app = createApp({
 
             // const d = new Date();
             // let newDate = d.toDateString();
-            
+
             let newDate = DateTime.now()
-                .setLocale("it")
+                // .setLocale("it")
                 .toFormat(FORMATO_ORA);
             const newSentMessage = {
                 date: newDate,
@@ -240,14 +246,21 @@ const app = createApp({
                 indiceMessaggioCasuale = Math.floor(Math.random() * this.risposte.length);
                 messaggioCasuale = this.risposte[indiceMessaggioCasuale];
                 let newDate = DateTime.now()
-                .setLocale("it")
-                .toFormat(FORMATO_ORA);
+                    // .setLocale("it")
+                    .toFormat(FORMATO_ORA);
                 const newSentMessage = {
                     date: newDate,
                     message: messaggioCasuale,
                     status: 'received'
                 }
                 this.contacts[this.currentChat].messages.push(newSentMessage);
+                // momento dell update precedente all array creato usiamo nextTick la chiama dopo l update
+                this.$nextTick(() => {
+                    const el = this.$refs.msg[this.$refs.msg.length - 1]
+                    el.scrollIntoView();
+                    // cosi arrivo all ultimo messaggio 
+                });
+
 
             }, 1000);
 
@@ -269,7 +282,27 @@ const app = createApp({
             }
             console.log('staScrivendo');
         },
+        changeView() {
+            this.showChat = !this.showChat;
+        }
+        // removeChat(obj) {
+        //     !obj.visible == obj.visible;
+        // },
+        // removeMsg(i) {
+        //     this.contacts[this.currentChat].messages.splice(i, 1);
+        //     console.log(i);
+        // },
 
+        // showOption(i) {
+        //     if (i === this.msgOpt.index && this.msgOpt.show) {
+        //         this.msgOpt.index = null;
+        //         this.msgOpt.show = false;
+        //     } else {
+        //         this.msgOpt.index = i;
+        //         this.msgOpt.show = true;
+        //     }
+
+        // }
     }
 }).mount('#app')
 

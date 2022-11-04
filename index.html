@@ -69,7 +69,7 @@
                                 <div class="ms-2 testo">
                                     <span><strong>{{item.name}}</strong></span>
                                     <span class="text-secondary d-flex flex-column testoPiccolo">Ultimo messaggio
-                                        inviato alle
+                                        inviato il
                                         {{getLastMessage(item).date}}</span>
 
                                     <small> {{getLastMessage(item).message}}</small>
@@ -82,7 +82,7 @@
             </div>
             <!-- lato messaggi  -->
 
-            <div class="latoMessaggi">
+            <div class="latoMessaggi" >
 
                 <div class="spazioIcona d-flex">
                     <div class="d-flex">
@@ -98,8 +98,8 @@
                         </div>
                     </div>
                     <div class="d-flex grey">
-
-                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 cursor"></i>
+                        <!-- qui devo cambiare visualizzazione chat  -->
+                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 cursor" @click="changeView"></i>
 
                         <i class="fa-solid fa-paperclip fs-4 me-4 cursor"></i>
 
@@ -109,7 +109,7 @@
                 <div class="centroMessaggi">
                     <div class="chat">
                         <div class="messaggio" :class="message.status"
-                            v-for="(message,index) in contacts[currentChat].messages" :key="index">
+                            v-for="(message,index) in contacts[currentChat].messages" :key="index" ref="msg">
                             <div>
                                 {{message.message}}
                                 <small id="orarioMessaggio">{{message.date}}</small>
@@ -122,11 +122,12 @@
                     <i class="fa-regular fa-face-smile fs-4 me-4 cursor"></i>
 
                     <!-- invio messaggio casuale controllo icona aereoplano- microfono collega il valore alla variabile newmessage -->
-                    
-                    <input type="text" class="w-50 h-50 rounded-pill border-0" placeholder=" Scrivi un messaggio"
-                        v-model.trim="newMessage" @keyup.enter="sendMessage" @keyup="impostaIconaInvio"> 
 
-                    <i class="fa-solid fs-4 me-4  ms-5 cursor" :class="iconaInvio" @click="sendMessage" id="aereoplano"></i>
+                    <input type="text" class="w-50 h-50 rounded-pill border-0" placeholder=" Scrivi un messaggio"
+                        v-model.trim="newMessage" @keyup.enter="sendMessage" @keyup="impostaIconaInvio">
+
+                    <i class="fa-solid fs-4 me-4  ms-5 cursor" :class="iconaInvio" @click="sendMessage"
+                        id="aereoplano"></i>
 
                 </div>
             </div>
