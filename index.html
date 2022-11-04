@@ -60,7 +60,7 @@
                 <!-- icone messaggi  -->
                 <div class="pannelloChat overflow-auto">
                     <div>
-                        <div class="unaChat mt-3" :class="{'active': index === currentChat}"
+                        <div class="unaChat mt-3" :class="{'active': item.id -1 === currentChat}"
                             v-for="(item, index) in cercaContatto" :key="item.id" @click="onClickContatto(item.id)">
                             <div class="d-flex">
                                 <div id="icona" class="ms-1">
@@ -82,7 +82,7 @@
             </div>
             <!-- lato messaggi  -->
 
-            <div class="latoMessaggi" >
+            <div class="latoMessaggi">
 
                 <div class="spazioIcona d-flex">
                     <div class="d-flex">
