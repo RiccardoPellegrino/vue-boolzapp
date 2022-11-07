@@ -60,11 +60,11 @@ body {
   border-right: 1px solid rgb(180, 180, 180);
 }
 
-.listaContatti {
+/* .listaContatti {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-}
+} */
 
 .latoMessaggi {
   position: relative;
@@ -209,7 +209,7 @@ i:hover {
   margin-right: 5px;
 }
 .darkbg{
-  background-color: #414242;
+  background-color: #494b4b;
 }
 .toggle {
   cursor: pointer;
