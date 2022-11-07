@@ -232,7 +232,7 @@ i:hover {
   content: '\f185';
   font: var(--fa-font-regular);
   text-align: center;
-  line-height: 23px;
+  line-height: 24px;
 }
 .toggle-switch.moon:before {
   content: '\f186';
@@ -273,7 +273,7 @@ i:hover {
 }
 @media screen and (max-width:768px) {
   .latoMessaggi {
-    display: none;
+    /* display: none; */
   }
 
   .latoContatti {
@@ -283,4 +283,8 @@ i:hover {
   .contenitoreGrande{
     min-width: 500px;
   }
+  .myd-none{
+    display: none;
+  }
+ 
 }

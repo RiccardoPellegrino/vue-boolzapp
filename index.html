@@ -22,7 +22,7 @@
 
             <!-- lato contatti  -->
 
-            <div class="latoContatti":class="{'darkbg' : dark}">
+            <div class="latoContatti":class="{'darkbg' : dark , 'myd-none' : !showChat}">
 
                 <div class="mieInfo d-flex justify-content-between":class="{'darkbg' : dark}">
                     <div class="d-flex">
@@ -89,9 +89,9 @@
             </div>
             <!-- lato messaggi  -->
 
-            <div class="latoMessaggi">
+            <div class="latoMessaggi":class="{'myd-none' : showChat}">
 
-                <div class="spazioIcona d-flex":class="{'darkbg' : dark}">
+                <div class="spazioIcona d-flex":class="{'darkbg' : dark }">
                     <div class="d-flex">
                         <div id="icona" class="ms-1">
                             <img :src="'./img/avatar'+ contacts[currentChat].avatar+'.jpg'"
@@ -106,7 +106,7 @@
                     </div>
                     <div class="d-flex grey">
                         <!-- qui devo cambiare visualizzazione chat  -->
-                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 cursor" @click="changeView"></i>
+                        <i class="fa-sharp fa-solid fa-magnifying-glass fs-4 me-4 cursor" @click="onClickShow()"></i>
 
                         <i class="fa-solid fa-paperclip fs-4 me-4 cursor"></i>
 
