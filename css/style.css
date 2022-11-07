@@ -33,11 +33,16 @@ body {
 .mieInfo {
   height: 60px;
   background-color: #EAEAEA;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  align-items: center;
 }
 
 .unaChat {
   height: 90px;
   cursor: pointer;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 #ricerca {
@@ -79,6 +84,8 @@ body {
   height: 60px;
   width: 100%;
   background-color: #F3EEEA;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 .centroMessaggi {
@@ -91,6 +98,8 @@ body {
   background-color: #EAEAEA;
   align-items: center;
   height: 60px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 .spazioNotifiche {
@@ -98,6 +107,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 65px;
+ 
+  border-bottom: 1px solid grey;
 }
 
 #bell {
@@ -183,6 +194,7 @@ i:hover {
 
 .active {
   background-color: #e6e0e0;
+
 }
 
 #aereoplano:hover {
@@ -196,7 +208,69 @@ i:hover {
   font-size: 10px;
   margin-right: 5px;
 }
-
+.darkbg{
+  background-color: #414242;
+}
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+}
+.toggle-switch {
+  display: inline-block;
+  background: #ccc;
+  border-radius: 16px;
+  width: 58px;
+  height: 32px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.25s;
+}
+.toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+  content: '\f185';
+  font: var(--fa-font-regular);
+  text-align: center;
+  line-height: 23px;
+}
+.toggle-switch.moon:before {
+  content: '\f186';
+  font: var(--fa-font-regular);
+  text-align: center;
+  line-height: 24px;
+}
+.toggle-switch:before {
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.toggle-checkbox:checked + .toggle-switch {
+  background: #7a7e7c;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 30px;
+}
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+.toggle-label {
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
 @media screen and (max-width:768px) {
   .latoMessaggi {
     display: none;

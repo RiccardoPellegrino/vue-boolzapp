@@ -18,13 +18,13 @@
 
 <body>
     <div id="app" class="background d-flex align-items-center justify-content-center">
-        <main class="contenitoreGrande d-flex flex-row">
+        <main class="contenitoreGrande d-flex flex-row" >
 
             <!-- lato contatti  -->
 
-            <div class="latoContatti">
+            <div class="latoContatti":class="{'darkbg' : dark}">
 
-                <div class="mieInfo d-flex justify-content-between">
+                <div class="mieInfo d-flex justify-content-between":class="{'darkbg' : dark}">
                     <div class="d-flex">
                         <div id="icona" class="ms-1">
                             <img src="./img/avatar_1.jpg" alt="">
@@ -33,6 +33,13 @@
                             <span><strong>Riccardo</strong></span>
                         </div>
                     </div>
+                    <label>
+                        <label class="toggle" >
+                            <input class="toggle-checkbox" type="checkbox">
+                            <div @click="darkMode()" class="toggle-switch" :class="{'moon' : dark}"></div>
+                            <span class="toggle-label"></span>
+                        </label>
+                    </label>
                     <div class="grey d-flex align-items-center">
                         <i class="fa-solid fa-circle-notch fs-4 me-4 cursor"></i>
                         <i class="fa-solid fa-message fs-4 me-4  cursor"></i>
@@ -40,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="spazioNotifiche d-flex">
+                <div class="spazioNotifiche d-flex" :class="{'darkbg' : dark}">
                     <div id="tondo">
                         <i class="fa-solid fa-bell-slash fs-3" id="bell"></i>
                     </div>
@@ -84,7 +91,7 @@
 
             <div class="latoMessaggi">
 
-                <div class="spazioIcona d-flex">
+                <div class="spazioIcona d-flex":class="{'darkbg' : dark}">
                     <div class="d-flex">
                         <div id="icona" class="ms-1">
                             <img :src="'./img/avatar'+ contacts[currentChat].avatar+'.jpg'"
@@ -106,7 +113,7 @@
                         <i class="fa-solid fa-ellipsis-vertical fs-4 me-4 cursor"></i>
                     </div>
                 </div>
-                <div class="centroMessaggi">
+                <div class="centroMessaggi" :class="{'darkbg' : dark}">
                     <div class="chat">
                         <div class="messaggio" :class="message.status"
                             v-for="(message,index) in contacts[currentChat].messages" :key="index" ref="msg">
@@ -117,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="scriviQui grey">
+                <div class="scriviQui grey" :class="{'darkbg' : dark}">
 
                     <i class="fa-regular fa-face-smile fs-4 me-4 cursor"></i>
 

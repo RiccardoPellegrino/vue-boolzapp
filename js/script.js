@@ -22,6 +22,7 @@ const app = createApp({
             currentChat: 0,
             newMessage: '',
             searchTerm: '',
+            dark:false,
             showChat: false,
             msgOpt: {
                 index: null,
@@ -222,7 +223,9 @@ const app = createApp({
             this.currentChat = this.contacts.findIndex((pippo) => pippo.id === idContatto);
             this.changeView();
         },
-
+        darkMode(){
+            this.dark = !this.dark
+        },
         sendMessage() {
             if (!this.newMessage) return;
 
